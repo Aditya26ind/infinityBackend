@@ -1,0 +1,8 @@
+model Dashboard{
+    id Int @id @default(autoincrement())
+    source String
+    content String
+    metaData String
+    user User @relation(fields: [userId], references: [id])
+    userId Int
+}

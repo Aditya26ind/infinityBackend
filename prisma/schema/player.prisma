@@ -1,0 +1,73 @@
+model Player {
+  id            Int          @id @default(autoincrement())
+  uniqueId      Int          @unique
+  name          String
+  country       String
+  faceImageId   String
+  bowlingStats  BowlingStats[]
+  battingStats  BattingStats[]
+  informationId Information?
+}
+
+model Information {
+  id        Int      @id @default(autoincrement())
+  bat       String?
+  bowl      String?
+  name      String
+  nickName  String?
+  height    String?
+  role      String?
+  birthPlace String?
+  intlTeam  String?
+  teams     String?
+  DoB       String?
+  image     String?
+  bio       String?
+  rankings  Json
+  player    Player?  @relation(fields: [playerId], references: [id])
+  playerId  Int?     @unique
+}
+
+
+model BowlingStats {
+  id         Int      @id @default(autoincrement())
+  format     String[]
+  matches    String[]
+  innings    String[]
+  balls      String[]
+  runs       String[]
+  maidens    String[]
+  wickets    String[]
+  average    String[]
+  economy    String[]
+  strikeRate String[]
+  fourWickets String[]
+  fiveWickets String[]
+  tenwickets String[]
+  player     Player   @relation(fields: [playerId], references: [id])
+  playerId   Int
+}
+
+model BattingStats{
+ id Int @id @default(autoincrement())
+ format String[]
+ matches String[]
+ innings String[]
+ runs String[]
+ balls String[]
+ highest String[]
+ average String[]
+ strikeRate String[]
+ notOut String[]
+ fours String[]
+ sixes String[]
+ ducks String[]
+ fifties String[]
+ hundreds String[]
+ twoHundreds String[]
+ threeHundreds String[]
+ fourHundreds String[]
+ player Player   @relation(fields: [playerId], references: [id])
+ playerId   Int
+
+}

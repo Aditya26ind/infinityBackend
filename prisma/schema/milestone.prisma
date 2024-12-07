@@ -1,0 +1,208 @@
+model recordType {
+    id          Int               @id @default(autoincrement())
+    name        String
+    mostRuns    MostRuns[]
+    highestScores      HighestScore[]
+    highestAverages    HighestAverage[]
+    strikeRates        highestStrikeRate[]
+    mostSixes          MostSixes[]
+    mostFours          MostFours[]
+    mostFifties        MostFifties[]
+    mostHundreds       MostHundreds[]
+    mostNineties       MostNineties[]
+    mostWickets        MostWickets[]
+    lowestAverages     LowestAverage[]
+    bestBowlingInnings BestBowlingInnings[]
+    lowestEconomies    LowestEconomy[]
+    lowestStrikeRates  LowestStrikeRate[]
+    mostFiveWickets MostFiveWickets[]
+}
+
+model MostRuns {
+    id        Int        @id @default(autoincrement())
+   
+    uniqueId  Int        @unique
+    batsmen   String
+    matches   String
+    innings   String
+    runs      String
+    average   String
+    recordId  Int
+    record    recordType @relation(fields: [recordId], references: [id])
+}
+
+model HighestScore {
+    id          Int        @id @default(autoincrement())
+    uniqueId    Int        @unique
+    batter     String
+    highScore       String
+    balls     String
+    verses       String
+    strikeRate        String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model HighestAverage {
+    id          Int        @id @default(autoincrement())
+    uniqueId    Int        @unique
+    batter     String
+    matches     String
+    innings     String
+    runs String
+    average     String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model highestStrikeRate {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    batter     String
+    matches     String
+    innings     String
+    average String
+    strikeRate  String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model MostSixes {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    batsmen     String
+    matches     String
+    innings     String
+    runs String
+    sixes       String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model MostFours {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    batter     String
+    matches     String
+    innings     String
+    runs String
+    fours       String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model MostFifties {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    batter     String
+    matches     String
+    innings     String
+    runs String
+    fifties     String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model MostHundreds {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    batter     String
+    matches     String
+    innings     String
+    runs String
+    hundreds    String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model MostNineties {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    batsmen     String
+    matches     String
+    innings     String
+    runs String
+    nineties    String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model MostWickets {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    bowler      String
+    matches     String
+    overs     String
+    wickets     String
+    average     String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model LowestAverage {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    bowler      String
+    matches     String
+    innings     String
+    wickets     String
+    average     String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model BestBowlingInnings {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    bowler      String
+    Vs     String
+    BBI    String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model LowestEconomy {
+    id          Int        @id @default(autoincrement())
+    
+    uniqueId    Int        @unique
+    bowler      String
+    wickets String
+    overs     String
+    matches     String
+    economy     String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model LowestStrikeRate {
+    id          Int        @id @default(autoincrement())
+    uniqueId    Int        @unique
+    bowler      String
+    matches     String
+    overs     String
+    wickets String
+    strikeRate  String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
+
+model MostFiveWickets{
+    id Int @id @default(autoincrement())
+    uniqueId Int @unique
+    bowler String
+    matches String
+    overs String
+    wickets String
+    fiveWickets String
+    recordId    Int
+    record      recordType @relation(fields: [recordId], references: [id])
+}
