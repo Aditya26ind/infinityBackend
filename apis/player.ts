@@ -77,7 +77,8 @@ playerRouter.get('/batting/:uniqueId', authorize, (async (req: Request, res: Res
     }
 
     const battingData = await prisma.battingStats.findMany({
-      where: { playerId: player.id }
+      where: { playerId: player.id },
+      include:{ player: true }
     });
 
     if (battingData.length > 0) {
@@ -149,7 +150,8 @@ playerRouter.get('/bowling/:uniqueId', authorize,(async (req: Request, res: Resp
       return res.status(404).json({ message: 'Player not found' });
     }
     const bowlingStats = await prisma.bowlingStats.findMany({
-      where: { playerId: player.id }
+      where: { playerId: player.id },
+      include:{ player: true }
     });
 
     if (bowlingStats.length > 0) {
@@ -199,13 +201,14 @@ playerRouter.get('/information/:uniqueId',authorize, (async (req: Request, res: 
     const player = await prisma.player.findUnique({
       where: { uniqueId }
     });
-
+    console.log(player);
     if (!player) {
       return res.status(404).json({ message: 'Player not found' });
     }
 
     const information = await prisma.information.findUnique({
-      where: { playerId: player.id }
+      where: { playerId: player.id },
+      include:{ player: true }
     });
 
     if(!information) {
