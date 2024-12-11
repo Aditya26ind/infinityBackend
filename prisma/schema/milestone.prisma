@@ -57,7 +57,6 @@ model HighestAverage {
 
 model highestStrikeRate {
     id          Int        @id @default(autoincrement())
-    
     uniqueId    Int        @unique
     batter     String
     matches     String
